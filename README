@@ -25,6 +25,9 @@ function.
 * DeleteJunctionDestination will remove the reparse point from a
 directory
 
+* IsDirectoryJunction will test whether a directory is a symlink or
+junction point to another directory
+
 
 Install:
 
