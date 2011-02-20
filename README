@@ -1,0 +1,35 @@
+ln-win consists of a JunctionPoint library and a port of the unix `ln`
+tool for Windows, developed and maintained by Mahmoud Al-Qudsi
+<mqudsi@neosmart.net> of NeoSmart Technologies <http://neosmart.net/>
+
+
+ln.exe
+
+* ln-win implements both hardlinks and softlinks for both files and
+folders
+
+* Create softlinks by specifying /s in the commandline
+
+* Hardlinks are created by default (per the posix standard)
+
+
+JunctionPoints library
+
+* CreateJunctionPoint will create a reparse point (hardlink) for an NTFS
+directory
+
+* GetJunctionDestination will get the final target directory for a
+symlink'd or hardlink'd directory. Files are not supported by this
+function.
+
+* DeleteJunctionDestination will remove the reparse point from a
+directory
+
+
+Install:
+
+* Compile and copy the x64 build to C:\Windows\System32
+
+* Compile and copy the x86 build to C:\Windows\SysWow64
+
+* Use from the commandline as usual: ln.exe [/s] source destination
