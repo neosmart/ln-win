@@ -12,65 +12,65 @@
 
 namespace neosmart
 {
-	struct SafeHandle
-	{
-		HANDLE Handle;
+    struct SafeHandle
+    {
+        HANDLE Handle;
 
-		SafeHandle()
-		{
-			Handle = NULL;
-		}
+        SafeHandle()
+        {
+            Handle = NULL;
+        }
 
-		~SafeHandle()
-		{
-			ForceClose();
-		}
+        ~SafeHandle()
+        {
+            ForceClose();
+        }
 
-		bool IsInvalid()
-		{
-			return Handle == INVALID_HANDLE_VALUE || Handle == NULL;
-		}
+        bool IsInvalid()
+        {
+            return Handle == INVALID_HANDLE_VALUE || Handle == NULL;
+        }
 
-		void ForceClose()
-		{
-			if(!IsInvalid())
-				CloseHandle(Handle);
-			Handle = NULL;
-		}
-	};
+        void ForceClose()
+        {
+            if(!IsInvalid())
+                CloseHandle(Handle);
+            Handle = NULL;
+        }
+    };
 
 #pragma pack(push, 1)
-	typedef struct _REPARSE_DATA_BUFFER
-	{
-		DWORD ReparseTag;
-		WORD  ReparseDataLength;
-		WORD  Reserved;
-		union
-		{
-			struct
-			{
-				WORD SubstituteNameOffset;
-				WORD SubstituteNameLength;
-				WORD PrintNameOffset;
-				WORD PrintNameLength;
-				ULONG Flags;
-				WCHAR PathBuffer[1];
-			} SymbolicLinkReparseBuffer;
+    typedef struct _REPARSE_DATA_BUFFER
+    {
+        DWORD ReparseTag;
+        WORD  ReparseDataLength;
+        WORD  Reserved;
+        union
+        {
+            struct
+            {
+                WORD SubstituteNameOffset;
+                WORD SubstituteNameLength;
+                WORD PrintNameOffset;
+                WORD PrintNameLength;
+                ULONG Flags;
+                WCHAR PathBuffer[1];
+            } SymbolicLinkReparseBuffer;
 
-			struct
-			{
-				WORD SubstituteNameOffset;
-				WORD SubstituteNameLength;
-				WORD PrintNameOffset;
-				WORD PrintNameLength;
-				WCHAR PathBuffer[1];
-			} MountPointReparseBuffer;
+            struct
+            {
+                WORD SubstituteNameOffset;
+                WORD SubstituteNameLength;
+                WORD PrintNameOffset;
+                WORD PrintNameLength;
+                WCHAR PathBuffer[1];
+            } MountPointReparseBuffer;
 
-			struct
-			{
-				BYTE DataBuffer[1];
-			} GenericReparseBuffer;
-		};
-	} REPARSE_DATA_BUFFER;
+            struct
+            {
+                BYTE DataBuffer[1];
+            } GenericReparseBuffer;
+        };
+    } REPARSE_DATA_BUFFER;
 #pragma pack(pop)
 }

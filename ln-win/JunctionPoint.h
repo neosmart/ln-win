@@ -13,8 +13,8 @@
 
 namespace neosmart
 {
-	bool CreateJunctionPoint(LPCTSTR origin, LPCTSTR junction);
-	bool IsDirectoryJunction(LPCTSTR path, DWORD attributes = 0);
-	bool GetJunctionDestination(LPCTSTR path, OUT LPTSTR destination, DWORD attributes = 0);
-	bool DeleteJunctionPoint(LPCTSTR path);
+    bool CreateJunctionPoint(LPCTSTR origin, LPCTSTR junction);
+    bool IsDirectoryJunction(LPCTSTR path, DWORD attributes = 0);
+    bool GetJunctionDestination(LPCTSTR path, OUT LPTSTR destination, DWORD attributes = 0);
+    bool DeleteJunctionPoint(LPCTSTR path);
 }
